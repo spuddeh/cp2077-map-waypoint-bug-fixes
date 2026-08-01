@@ -17,7 +17,8 @@
     stays gone (no ghost route); a survivor is restored, at worst a one-frame flicker.
   - No census, no per-frame work — runs only on the Track-Waypoint press. Signatures verified
     against the RTTI dump. Compiles clean (`redscript-check` PASS, both configs).
-  - **Not yet verified in-game.**
+  - **VERIFIED in-game 2026-08-02** (A/B, Testing): fix off → phantom HUD/minimap marker
+    stranded after untrack; fix on → no leftover marker.
 - Split the source into `InputLeakFix.reds` and `PhantomWaypointFix.reds` under
   `r6/scripts/MapWaypointBugFixes/`.
 

@@ -13,11 +13,9 @@ tracked locations. Pure redscript, zero dependencies.
 - **Phantom waypoint fix** — deactivate the manually-tracked mappin before vanilla destroys
   it in `TryTrackQuestOrSetWaypoint`, so its HUD/minimap widget is not stranded when a
   waypoint is untracked or the tracked slot is switched to a quest/POI; re-activate it only
-  if it survived. *(Compiles clean; not yet verified in-game.)*
+  if it survived. *(Verified in-game 2026-08-02, A/B on Testing.)*
 
 ## Planned
 
-- In-game verification of the phantom waypoint fix (create a stranded marker on the
-  reproducing path, confirm the wrap prevents it by eye).
 - If other world-map / mappin base-game bugs that read as broken waypoints turn up, they
   belong here as additional wraps first documented in this list.
