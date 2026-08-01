@@ -1,6 +1,27 @@
-# Changelog — World Map Input Leak Fix
+# Changelog — Map Waypoint Bug Fixes
 
-## [0.1.0] — 2026-07-16 — Initial
+## [0.2.0] — 2026-08-02
+
+- Renamed the mod from **World Map Input Leak Fix** to **Map Waypoint Bug Fixes** — an
+  umbrella for base-game bugs a player experiences as broken waypoints / mappins / tracked
+  locations. The input-leak fix is now one of two fixes it carries.
+- **New: phantom waypoint fix.** `@wrapMethod(WorldMapMenuGameController) TryTrackQuestOrSetWaypoint`.
+  Cyberpunk strands a mappin's HUD/minimap widget when a mappin that has ever been tracked is
+  destroyed (untracking a waypoint, or switching the tracked slot to a quest/POI from the
+  world map). The stranded "phantom" marker persists until an event that rebuilds the player
+  model (autosave, Inventory, Stats) clears it — so with autosaves off it lingers.
+  - The wrap deactivates the manually-tracked mappin *before* vanilla's native
+    `UntrackCustomPositionMappin` runs, so its widget tears down through the normal deactivate
+    path instead of being orphaned, then re-activates it only if it survived the call.
+  - Safe against the exact manual-slot semantics: a destroyed mappin reads back as null and
+    stays gone (no ghost route); a survivor is restored, at worst a one-frame flicker.
+  - No census, no per-frame work — runs only on the Track-Waypoint press. Signatures verified
+    against the RTTI dump. Compiles clean (`redscript-check` PASS, both configs).
+  - **Not yet verified in-game.**
+- Split the source into `InputLeakFix.reds` and `PhantomWaypointFix.reds` under
+  `r6/scripts/MapWaypointBugFixes/`.
+
+## [0.1.0] — 2026-07-16 — Initial (as World Map Input Leak Fix)
 
 - `@wrapMethod(WorldMapMenuGameController) OnUninitialize`: unregisters the four global
   input callbacks (`OnAxisInput`, `OnPressInput`, `OnHoldInput`, `OnReleaseInput`) that

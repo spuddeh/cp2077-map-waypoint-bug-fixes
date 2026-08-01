@@ -1,6 +1,6 @@
 // ======================================================================================
-// Mod Name: World Map Input Leak Fix
-// File: WorldMapInputLeakFix.reds
+// Mod Name: Map Waypoint Bug Fixes
+// File: InputLeakFix.reds
 // Author: Spuddeh
 // Description: Cyberpunk's WorldMapMenuGameController registers four global input
 //              callbacks in OnEntityAttached (worldMap.swift:482-485) but unregisters
@@ -17,7 +17,7 @@
 //              worldMap.swift:519-522, so no signature is guessed. With it installed, no
 //              controller is ever left registered, so there is nothing to turn into a
 //              ghost - regardless of which other mods are present.
-// File Version: 0.1.0
+// File Version: 0.2.0
 // Credits: Spuddeh. Mechanism measured with WorldMapLeakProbe; substrate is a base-game bug.
 // ======================================================================================
 
