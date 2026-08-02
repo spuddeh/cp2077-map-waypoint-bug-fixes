@@ -18,7 +18,7 @@
 //              controller is ever left registered, so there is nothing to turn into a
 //              ghost - regardless of which other mods are present.
 // File Version: 0.3.0
-// Credits: Spuddeh. Mechanism measured with WorldMapLeakProbe; substrate is a base-game bug.
+// Credits: Spuddeh. Substrate is a base-game bug.
 // ======================================================================================
 
 @wrapMethod(WorldMapMenuGameController)

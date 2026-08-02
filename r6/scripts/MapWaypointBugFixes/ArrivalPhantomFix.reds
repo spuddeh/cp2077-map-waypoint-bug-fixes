@@ -2,40 +2,34 @@
 // Mod Name: Map Waypoint Bug Fixes
 // File: ArrivalPhantomFix.reds
 // Author: Spuddeh
-// Description: Cyberpunk strands a custom waypoint's HUD/minimap widget when the waypoint is
-//              destroyed after being reached (on foot or by autodrive). Measured on v2.31
-//              (MappinLab, 2026-08-02): on arrival the pin leaves the manually-tracked slot and
-//              is UnregisterMappin'd a couple of frames later, but the marker's controller is NOT
-//              torn down, so its widget outlives the mappin. It clears only when a player-model
-//              menu (Inventory/Stats) or an autosave rebuilds the HUD.
+// Description: A custom waypoint's HUD/minimap marker is stranded when the waypoint is destroyed
+//              after being reached (on foot or by autodrive): the pin leaves the manually-tracked
+//              slot and is unregistered, but its marker controller is not torn down, so the widget
+//              outlives the mappin. Vanilla clears it only when a player-model menu (Inventory or
+//              Stats) or an autosave rebuilds the HUD.
 //
-//              The release lever that works AFTER the fact is SetRootVisible on the controller's
-//              own widget - proven by the SweepPhantoms probe. SetMappinActive does NOT work here:
-//              it can only release the widget if called BEFORE the untrack (as PhantomWaypointFix
-//              does on the scripted map path), and the on-foot untrack is native with no such
-//              pre-hook. SetRootVisible hides the already-stranded widget directly, so timing does
-//              not matter.
+//              Marker controllers watch the manually-tracked slot; once a controller's pin is no
+//              longer the slot, SetRootVisible(false) hides its widget. This hides the
+//              already-stranded widget directly, so the arrival-untrack timing does not matter.
+//              SetMappinActive is NOT usable here - it releases the widget only when called before
+//              the untrack, and the arrival untrack is native with no pre-hook.
 //
-//              The trigger is the MappinSystem's manually-tracked SLOT, not the controller's own
-//              tracked flags - those never flip on arrival (measured). UpdateTrackedState fires
-//              often enough on the marker controllers; each compares its cached mappin id to the
-//              current slot and hides its widget when the pin is no longer tracked.
+//              The trigger is the MappinSystem slot, NOT the controller's tracked flags
+//              (IsPlayerTracked / IsTracked / IsCustomPositionTracked) - those do not flip when a
+//              pin is reached. There is no per-controller edge state: marker controllers are pooled,
+//              so the instance that sees the untrack is usually not the one that saw the track.
 //
-//              CTD SAFETY IS LOAD-BEARING. UpdateTrackedState is also called WHILE mappins are
-//              being destroyed; a wref to a destroyed mappin reads non-null, so dereferencing it
-//              (GetVariant/GetDisplayName) crashes the game - measured by NCZoningDistrictGuide on
-//              2026-08-02, "CTD on every world-map open". So the mappin is touched ONLY in the icon
-//              path (UpdateIcon), where it is guaranteed bound; the variant and id are cached there,
-//              and the tracked hook reads those fields and the slot id - never the mappin. Pattern
-//              mirrored from MapMarker.reds.
+//              CTD SAFETY IS LOAD-BEARING. UpdateTrackedState also runs while mappins are being
+//              destroyed, where a wref to a destroyed mappin reads non-null; dereferencing it
+//              (GetVariant/GetDisplayName) crashes the game. So the variant and id are read ONLY in
+//              the icon path (UpdateIcon, where the mappin is guaranteed bound) and cached; the
+//              tracked hook reads those cached fields and the slot id, never the mappin.
 //
-//              Scope is every CustomPositionVariant (21): the player's own waypoint and any mod Set
-//              Pin alike (NCZDG's markers are variant-10 and untouched). SetRootVisible is driven
-//              from the slot both ways, so a pin that is re-tracked comes back.
+//              Scope: CustomPositionVariant (21) only - the player's own waypoint and mod Set Pins.
+//              Quest, POI and other variants are left alone. Visibility is driven from the slot both
+//              ways, so a pin that is re-tracked comes back.
 // File Version: 0.3.0
-// Credits: Spuddeh. Substrate is a base-game bug; the cache-in-icon-path CTD workaround is the
-//          technique NCZoningDistrictGuide's MapMarker.reds documents, and the SetRootVisible
-//          release is what the MappinLab SweepPhantoms probe proved.
+// Credits: Spuddeh. Substrate is a base-game bug.
 // ======================================================================================
 
 // Cached per controller. Resolved only where the mappin is live (icon path), read where it is not.
