@@ -1,7 +1,9 @@
 # Claude Code (local only - never commit; these are internal notes)
 CLAUDE.md
 
-# Editor
+# Editor / WolvenKit
 .vscode/
 .history/
+GraphEditorStates/
+images/
 *.log

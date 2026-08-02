@@ -1,0 +1,19 @@
+{
+  "$schema_note": "Maps release artifacts to their Nexus Mods targets. To publish, create a GitHub Release tagged '<artifact>-v<version>' (e.g. mapwaypointbugfixes-v1.0.0). The release.yml workflow parses the tag, stages contentDir into installDir, zips it as '<fileBaseName>_v<version>.zip' (so 'r6/...' sits at the zip root), attaches the zip to the release, and uploads to Nexus via Nexus-Mods/upload-action (beta.8, v3 upload API). See the portfolio's RELEASING notes / the nexus-ci-release-pipeline wiki page.",
+  "$paths_note": "contentDir = repo folder whose CONTENTS ship. installDir = path inside the zip those contents are placed at (the in-game install path under the Cyberpunk 2077 root). fileBaseName = the download filename stem (version is appended). Pure redscript - loose .reds files under r6/scripts/MapWaypointBugFixes, no WolvenKit packing.",
+  "$contentdir_note": "contentDir is 'r6' so the zip root is 'r6/scripts/MapWaypointBugFixes/*.reds'. The mod ships nothing outside r6/scripts.",
+  "$file_id_note": "The Nexus file id is NOT stored here. It lives in a REPOSITORY VARIABLE named NEXUS_FILE_ID_MAPWAYPOINTBUGFIXES (uppercased, '-' -> '_'), set under Settings > Secrets and variables > Actions > Variables. A file_id DOES NOT EXIST until the mod's first file has been uploaded to Nexus BY HAND, so committing a placeholder commits a lie. Get it from the mod page's Files tab > 'API Info' (Nexus labels it 'Group ID'). DO NOT use the file_id from the public v1 API -- that is a different id space and the wrong value looks entirely plausible.",
+  "artifacts": {
+    "mapwaypointbugfixes": {
+      "displayName": "MapWaypointBugFixes",
+      "fileBaseName": "MapWaypointBugFixes",
+      "contentDir": "r6",
+      "installDir": "r6",
+      "nexus_mod_id": "REPLACE_WITH_MOD_ID",
+      "category": "main",
+      "primary_mod_manager_download": true,
+      "show_requirements_pop_up": false,
+      "currentVersion": "1.0.0"
+    }
+  }
+}

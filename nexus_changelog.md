@@ -1,24 +1,15 @@
-### [Unreleased - v0.3.0]
+### [1.0.0] — first public release
 
-- **New:** fixes the same stuck-marker bug when you *reach* a waypoint. Walk or drive to a custom
-  waypoint and the game removes it, but its marker can hang on your HUD and minimap until you open
-  your Inventory or Stats (or an autosave fires). This makes the marker clear the moment you arrive.
-  No dependencies, no gameplay change.
+Fixes two base-game bugs you experience as broken waypoints and stuck map markers:
 
-### [Unreleased - v0.2.0]
+- **Stuck HUD / minimap markers.** A custom waypoint's marker can hang on your HUD and minimap
+  after the waypoint is gone — after you reach it (on foot or by autodrive), un-track it from
+  the map, or switch your tracked location to a quest or point of interest. Vanilla only clears
+  it on an Inventory/Stats open or an autosave; this clears it the moment the waypoint is gone.
+- **World-map input leak.** Opening the world map repeatedly leaves "ghost" copies of the map
+  controller running in the background. With certain other mods installed, pressing Track
+  Waypoint then drops several stray waypoints at once, one of which silently steals your tracked
+  marker and kills the GPS route line. This cleans up the map's input hooks every time you close
+  it.
 
-- Renamed to **Map Waypoint Bug Fixes**. It now fixes two base-game waypoint bugs, not one.
-- **New:** fixes a base-game bug where a map marker can get stuck on your HUD and minimap
-  after you untrack a waypoint or switch your tracked location to a quest or point of
-  interest. The stuck marker normally only clears after an autosave or opening your
-  Inventory or Stats — so with autosaves off it can hang around. This makes the marker clean
-  up the moment it should. No dependencies, no gameplay change.
-
-### [Unreleased - v0.1.0]
-
-- Fixes a base-game bug where opening the world map repeatedly can leave "ghost" copies of
-  the map running in the background. With certain other mods installed, pressing Track
-  Waypoint then drops several stray waypoints at once, one of which silently steals your
-  tracked marker and kills the GPS route line.
-- The fix cleans up the map's input hooks every time you close it — exactly what the game
-  intended to do but never did. No dependencies, safe with everything, no gameplay change.
+No dependencies, safe with everything, no gameplay change.

@@ -1,0 +1,31 @@
+[center][color=#00f0ff][size=6][b]MAP WAYPOINT BUG FIXES[/b][/size][/color]
+[i]Two small fixes for base-game bugs you experience as broken waypoints and stuck map markers.[/i][/center]
+[line]
+[color=#00f0ff][size=5][b]WHAT IT FIXES[/b][/size][/color]
+
+[b]1. Stuck HUD / minimap markers[/b]
+When a custom waypoint is removed, its marker can hang on your HUD and minimap long after the waypoint itself is gone. It happens on ordinary use:
+[list]
+[*]reaching a waypoint (on foot or by autodrive),
+[*]un-tracking one from the map, or
+[*]switching your tracked location to a quest or point of interest.
+[/list]
+Vanilla only clears the leftover marker when you open your [b]Inventory[/b] or [b]Stats[/b], or when an [b]autosave[/b] fires — so with autosaves off it can linger. This makes the marker clear the moment the waypoint is gone.
+
+[b]2. World-map input leak[/b]
+Opening the world map repeatedly leaves "ghost" copies of the map controller registered in the background. Alone they are harmless, but with certain other mods installed they come alive: one press of [b]Track Waypoint[/b] then drops several stray waypoints at once, one of which silently steals your tracked marker and kills the GPS route line. This cleans up the map's input hooks every time you close it — exactly what the game intended to do but never did.
+[line]
+[color=#00f0ff][size=5][b]REQUIREMENTS[/b][/size][/color]
+None. It uses only base-game methods. (Redscript, as with any script mod.)
+[line]
+[color=#00f0ff][size=5][b]COMPATIBILITY[/b][/size][/color]
+[list]
+[*]Pure redscript, added with [font=Courier New]@wrapMethod[/font] throughout — it adds to the game's behaviour rather than replacing it, so it stays friendly with other mods that touch the same systems.
+[*]Only affects custom-position waypoints (the kind you set yourself, and the "Set Pin" markers some mods add). Quest markers, points of interest, apartment and stash markers are left alone.
+[*]No saved-game changes, no new content, no persistent state.
+[/list]
+[line]
+[color=#00f0ff][size=5][b]FOR MOD AUTHORS[/b][/size][/color]
+If your mod places custom "Set Pin" style waypoints, the stuck-marker cleanup here covers them too — you do not need to work around that base-game bug yourself. It makes a good shared dependency for any mod that adds map markers.
+[line]
+[color=#8892b0][i]This mod was developed with the assistance of an LLM. All in-game testing and code validation was performed by a human. No rogue AIs were permitted through the Blackwall.[/i][/color]

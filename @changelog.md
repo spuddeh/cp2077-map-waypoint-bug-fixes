@@ -1,5 +1,13 @@
 # Changelog — Map Waypoint Bug Fixes
 
+## [1.0.0] — first public release
+
+- First public release. Ships two fixes: `InputLeakFix.reds` (world-map input leak) and
+  `ArrivalPhantomFix.reds` (stuck HUD/minimap markers on every path a custom waypoint leaves the
+  tracked slot — untrack, switch, on-foot arrival, autodrive arrival). Both verified in-game on
+  Testing; `release-check` PASS; compiles clean both configs. The 0.x entries below are internal
+  pre-release dev history and were never published.
+
 ## [0.3.0] — 2026-08-02
 
 - **New: arrival phantom fix.** `ArrivalPhantomFix.reds`. When a custom waypoint is *reached*
