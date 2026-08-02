@@ -1,57 +1,64 @@
 # Map Waypoint Bug Fixes
 
-A small, pure-redscript Cyberpunk 2077 mod that fixes two base-game bugs you experience as
-broken waypoints and stuck map markers. No dependencies, no gameplay changes, safe with
-everything.
+Fixes two base-game bugs you see as broken waypoints and stuck map markers. Pure redscript,
+no gameplay changes, safe with everything.
 
-- Nexus Mods: <!-- TODO: add the Nexus mod link after the first upload -->
+Nexus Mods: <!-- TODO: add the Nexus link after the first upload -->
 
 ## What it fixes
 
-**1. Stuck HUD/minimap markers.** When a custom waypoint is removed, its marker can hang on
-your HUD and minimap long after the waypoint is gone. It happens on ordinary use — reaching a
-waypoint (on foot or by autodrive), un-tracking one from the map, or switching your tracked
-location to a quest or point of interest. Vanilla only clears the leftover marker when you open
-your Inventory or Stats, or when an autosave fires — so with autosaves off it can linger. This
-makes the marker clear the moment the waypoint is gone.
+**Stuck HUD and minimap markers.** When a custom waypoint is removed, its marker can stay on
+your HUD and minimap after the waypoint itself is gone.
 
-**2. World-map input leak.** Opening the world map repeatedly leaves "ghost" copies of the map
-controller registered in the background. Alone they're harmless, but with certain other mods
-installed they come alive: one press of Track Waypoint then drops several stray waypoints at
-once, one of which silently steals your tracked marker and kills the GPS route line. This cleans
-up the map's input hooks every time you close it — exactly what the game intended to do but
-never did.
+**World-map input leak.** Opening the world map repeatedly leaves "ghost" copies of the map
+controller running in the background. With some other mods installed, one press of Track
+Waypoint then drops several stray waypoints at once, and one of them silently takes your tracked
+marker and kills the GPS route line.
+
+## How to see the bugs (in vanilla, with this mod off)
+
+Stuck marker:
+
+1. **Set a waypoint.** Open the map and right-click a spot to place a custom waypoint.
+2. **Get rid of it.** Walk or drive to it, or reopen the map and un-track it.
+3. **Check your HUD and minimap.** The marker is still there, even though the waypoint is gone.
+4. **Open Inventory or Stats.** Now it clears. (An autosave clears it too.)
+
+Input leak (needs the right mods loaded to trigger):
+
+1. **Open and close the world map a few times.**
+2. **Press Track Waypoint once.** Several stray waypoints drop at once instead of one, and your
+   tracked marker and route line can vanish.
+
+With this mod installed, neither happens.
 
 ## Requirements
 
-None. It uses only base-game methods.
+- [Redscript](https://www.nexusmods.com/cyberpunk2077/mods/1511)
+
+Nothing else.
 
 ## Install
 
 Install with your mod manager, or extract the archive into your Cyberpunk 2077 folder so that
-`r6\scripts\MapWaypointBugFixes\` sits alongside the game. Requires
-[redscript](https://www.nexusmods.com/cyberpunk2077/mods/1511) (bundled with most script mods /
-Redscript, and included in the common modding toolchains).
+`r6\scripts\MapWaypointBugFixes\` ends up in place.
 
 ## Compatibility
 
-- Pure redscript, using `@wrapMethod` throughout — it adds to the game's behaviour rather than
-  replacing it, so it stays compatible with other mods that touch the same systems.
-- Only affects custom-position waypoints (the kind you set yourself, and the "Set Pin" markers
-  some mods add). Quest markers, points of interest, apartment and stash markers are untouched.
-- No saved-game changes, no new content, no persistent state.
+Added with `@wrapMethod` throughout, so it stacks with other mods instead of replacing parts of
+the game. It only touches custom-position waypoints (yours, and the "Set Pin" markers some mods
+add). Quest, point-of-interest, apartment and stash markers are left alone. No saved-game
+changes.
 
 ## For mod authors
 
-If your mod places custom "Set Pin" style waypoints, the stuck-marker cleanup here covers them
-too — you don't need to work around that base-game bug yourself. It's a good shared dependency
-for any mod that adds map markers.
+If your mod places custom "Set Pin" waypoints, the stuck-marker fix covers them too. You can
+list this as a requirement instead of handling that bug yourself.
 
 ## License
 
-Licensed under the [PolyForm Noncommercial License 1.0.0](LICENSE). You may use, modify, and
-share this mod and its source for any noncommercial purpose, as long as you credit the original
-creator. Commercial use, including paid mods or selling, is not permitted.
+Licensed under the [PolyForm Noncommercial License 1.0.0](LICENSE). Use, modify, and share for
+any noncommercial purpose, with credit. No commercial use or paid mods.
 
 ## Disclaimer
 

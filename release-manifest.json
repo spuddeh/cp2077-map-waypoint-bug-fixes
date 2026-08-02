@@ -12,7 +12,7 @@
       "nexus_mod_id": "REPLACE_WITH_MOD_ID",
       "category": "main",
       "primary_mod_manager_download": true,
-      "show_requirements_pop_up": false,
+      "show_requirements_pop_up": true,
       "currentVersion": "1.0.0"
     }
   }
