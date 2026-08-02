@@ -20,8 +20,9 @@ Opening the world map repeatedly leaves "ghost" copies of the map controller run
 [*][b]Open Inventory or Stats.[/b] Now it clears. (An autosave clears it too.)
 [/list]
 
-[b]Input leak[/b] (needs the right mods loaded to trigger):
+[b]Input leak.[/b] This one is a vanilla leak that only bites when another mod keeps a leaked map controller alive. Confirmed with [i]worldBuilder - Akiway[/i] and [i]Native Interactions Framework[/i] loaded together; other combinations may do the same. It is not those mods' fault, they just surface a base-game leak.
 [list=1]
+[*][b]Load a stack that includes those two mods.[/b]
 [*][b]Open and close the world map a few times.[/b]
 [*][b]Press Track Waypoint once.[/b] Several stray waypoints drop at once, and your tracked marker and route line can vanish.
 [/list]

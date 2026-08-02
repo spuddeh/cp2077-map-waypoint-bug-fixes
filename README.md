@@ -24,10 +24,14 @@ Stuck marker:
 3. **Check your HUD and minimap.** The marker is still there, even though the waypoint is gone.
 4. **Open Inventory or Stats.** Now it clears. (An autosave clears it too.)
 
-Input leak (needs the right mods loaded to trigger):
+Input leak. This one is a vanilla leak that only bites when another mod keeps a leaked map
+controller alive. I confirmed it with `worldBuilder - Akiway` and `Native Interactions Framework`
+loaded together; other combinations may do the same. It is not those mods' fault, they just
+surface a base-game leak.
 
-1. **Open and close the world map a few times.**
-2. **Press Track Waypoint once.** Several stray waypoints drop at once instead of one, and your
+1. **Load a stack that includes those two mods.**
+2. **Open and close the world map a few times.**
+3. **Press Track Waypoint once.** Several stray waypoints drop at once instead of one, and your
    tracked marker and route line can vanish.
 
 With this mod installed, neither happens.
