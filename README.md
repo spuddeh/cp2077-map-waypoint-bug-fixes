@@ -3,7 +3,7 @@
 Fixes two base-game bugs you see as broken waypoints and stuck map markers. Pure redscript,
 no gameplay changes, safe with everything.
 
-Nexus Mods: <!-- TODO: add the Nexus link after the first upload -->
+Nexus Mods: <https://www.nexusmods.com/cyberpunk2077/mods/32175>
 
 ## What it fixes
 
