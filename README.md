@@ -25,7 +25,7 @@ Stuck marker:
 4. **Open Inventory or Stats.** Now it clears. (An autosave clears it too.)
 
 Input leak. This one is a vanilla leak that only bites when another mod keeps a leaked map
-controller alive. I confirmed it with `worldBuilder - Akiway` and `Native Interactions Framework`
+controller alive. I confirmed it with `World Builder` and `Native Interactions Framework`
 loaded together; other combinations may do the same. It is not those mods' fault, they just
 surface a base-game leak.
 

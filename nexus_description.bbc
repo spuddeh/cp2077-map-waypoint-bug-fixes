@@ -1,7 +1,7 @@
-[center][color=#00f0ff][size=6][b]MAP WAYPOINT BUG FIXES[/b][/size][/color]
+[center][color=#ffff00][size=6][b]MAP WAYPOINT BUG FIXES[/b][/size][/color]
 [i]Two small fixes for base-game bugs you see as broken waypoints and stuck map markers.[/i][/center]
 [line]
-[color=#00f0ff][size=5][b]WHAT IT FIXES[/b][/size][/color]
+[color=#ffff00][size=5][b]WHAT IT FIXES[/b][/size][/color]
 
 [b]Stuck HUD and minimap markers.[/b]
 When a custom waypoint is removed, its marker can stay on your HUD and minimap after the waypoint itself is gone. Vanilla only clears it when you open your Inventory or Stats, or when an autosave fires. This clears it the moment the waypoint is gone.
@@ -9,7 +9,7 @@ When a custom waypoint is removed, its marker can stay on your HUD and minimap a
 [b]World-map input leak.[/b]
 Opening the world map repeatedly leaves "ghost" copies of the map controller running in the background. With some other mods installed, one press of Track Waypoint then drops several stray waypoints at once, and one of them silently takes your tracked marker and kills the GPS route line. This cleans up the map's input hooks every time you close it.
 [line]
-[color=#00f0ff][size=5][b]HOW TO SEE THE BUGS[/b][/size][/color]
+[color=#ffff00][size=5][b]HOW TO SEE THE BUGS[/b][/size][/color]
 [i]In vanilla, with this mod off.[/i]
 
 [b]Stuck marker:[/b]
@@ -20,7 +20,7 @@ Opening the world map repeatedly leaves "ghost" copies of the map controller run
 [*][b]Open Inventory or Stats.[/b] Now it clears. (An autosave clears it too.)
 [/list]
 
-[b]Input leak.[/b] This one is a vanilla leak that only bites when another mod keeps a leaked map controller alive. Confirmed with [i]worldBuilder - Akiway[/i] and [i]Native Interactions Framework[/i] loaded together; other combinations may do the same. It is not those mods' fault, they just surface a base-game leak.
+[b]Input leak.[/b] This one is a vanilla leak that only bites when another mod keeps a leaked map controller alive. Confirmed with [i]World Builder[/i] and [i]Native Interactions Framework[/i] loaded together; other combinations may do the same. It is not those mods' fault, they just surface a base-game leak.
 [list=1]
 [*][b]Load a stack that includes those two mods.[/b]
 [*][b]Open and close the world map a few times.[/b]
@@ -29,20 +29,19 @@ Opening the world map repeatedly leaves "ghost" copies of the map controller run
 
 With this mod installed, neither happens.
 [line]
-[color=#00f0ff][size=5][b]REQUIREMENTS[/b][/size][/color]
+[color=#ffff00][size=5][b]REQUIREMENTS[/b][/size][/color]
 [list]
 [*][url=https://www.nexusmods.com/cyberpunk2077/mods/1511]Redscript[/url]
 [/list]
-Nothing else.
 [line]
-[color=#00f0ff][size=5][b]COMPATIBILITY[/b][/size][/color]
+[color=#ffff00][size=5][b]COMPATIBILITY[/b][/size][/color]
 [list]
 [*]Added with [font=Courier New]@wrapMethod[/font] throughout, so it stacks with other mods instead of replacing parts of the game.
 [*]Only touches custom-position waypoints (yours, and the "Set Pin" markers some mods add). Quest, point-of-interest, apartment and stash markers are left alone.
 [*]No saved-game changes, no new content.
 [/list]
 [line]
-[color=#00f0ff][size=5][b]FOR MOD AUTHORS[/b][/size][/color]
+[color=#ffff00][size=5][b]FOR MOD AUTHORS[/b][/size][/color]
 If your mod places custom "Set Pin" waypoints, the stuck-marker fix covers them too. You can list this as a requirement instead of handling that bug yourself.
 [line]
 [color=#8892b0][i]This mod was developed with the assistance of an LLM. All in-game testing and code validation was performed by a human. No rogue AIs were permitted through the Blackwall.[/i][/color]
