@@ -3,19 +3,25 @@
 ## [0.3.0] — 2026-08-02
 
 - **New: arrival phantom fix.** `ArrivalPhantomFix.reds`. When a custom waypoint is *reached*
-  (walked or driven to), vanilla untracks it and destroys it ~2 frames later, but never tears
-  down its HUD/minimap marker controller — so the marker strands until an Inventory/Stats open or
-  an autosave rebuilds the HUD. This hides the marker on the untrack edge, before the destroy.
-  - Hooks `UpdateTrackedState` (`BaseMappinBaseController` + the `GameplayMappinController`
-    override); on the tracked→untracked edge of a custom-position waypoint it calls
-    `SetRootVisible(false)`, and restores on re-track.
+  (walked or driven to), vanilla untracks and destroys it, but never tears down its HUD/minimap
+  marker controller — so the marker strands until an Inventory/Stats open or an autosave rebuilds
+  the HUD. This hides the stranded widget directly.
+  - Marker controllers wrap `UpdateTrackedState` (`BaseMappinBaseController` + the
+    `GameplayMappinController` override) and compare their mappin id to the **manually-tracked
+    slot** (`GetManuallyTrackedMappinID`). A custom-position pin that is no longer the tracked slot
+    gets `SetRootVisible(false)`; the slot drives visibility both ways, so a re-tracked pin returns.
+  - **Why `SetRootVisible`, not `SetMappinActive`:** measured that `SetMappinActive(false)` only
+    releases the widget when called *before* the untrack (as `PhantomWaypointFix` does on the
+    scripted map path). The on-foot untrack is native with no pre-hook, and post-untrack
+    deactivation does not release the widget even while the mappin is still registered.
+    `SetRootVisible` hides the already-stranded widget directly, so timing is irrelevant.
   - **CTD-safe by construction.** `UpdateTrackedState` is also called while mappins are being
-    destroyed, where dereferencing the mappin crashes the game. So the variant is resolved and
-    cached only in the icon path (`UpdateIcon`, mappin guaranteed live), and the tracked hook reads
-    the cached flag plus controller-native `IsPlayerTracked()` — never the mappin.
+    destroyed, where dereferencing the mappin crashes the game. Variant + id are cached only in the
+    icon path (`UpdateIcon`, mappin guaranteed live); the tracked hook reads those fields and the
+    slot id — never the mappin.
   - Scope is every `CustomPositionVariant` (21): the player's own waypoint and mod Set Pins alike.
-  - Measured on v2.31 with the MappinLab bench (the untrack→2-frame→destroy window, and that the
-    marker controller does not tear down). **Compiles clean both configs; pending in-game verify.**
+  - **VERIFIED in-game 2026-08-02** (Testing): marker clears on arrival, both on foot and by
+    autodrive. Compiles clean both configs; release-check PASS.
 
 ## [0.2.0] — 2026-08-02
 

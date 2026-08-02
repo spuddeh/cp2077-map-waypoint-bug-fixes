@@ -14,11 +14,12 @@ tracked locations. Pure redscript, zero dependencies.
   it in `TryTrackQuestOrSetWaypoint`, so its HUD/minimap widget is not stranded when a
   waypoint is untracked or the tracked slot is switched to a quest/POI; re-activate it only
   if it survived. *(Verified in-game 2026-08-02, A/B on Testing.)*
-- **Arrival phantom fix** — when a custom waypoint is reached and vanilla destroys it, its
-  HUD/minimap marker controller is not torn down and the widget strands. Hides the marker on
-  the tracked→untracked edge (`UpdateTrackedState`), before the destroy; CTD-safe (variant
-  cached in the icon path, never dereferenced in the tracked hook). Covers every variant-21
-  custom-position pin. *(Compiles clean; pending in-game verify.)*
+- **Arrival phantom fix** — when a custom waypoint is reached (on foot or by autodrive) and
+  vanilla destroys it, its HUD/minimap marker controller is not torn down and the widget strands.
+  Marker controllers watch the manually-tracked slot in `UpdateTrackedState` and `SetRootVisible`
+  their widget off once their pin is no longer the tracked slot. CTD-safe (variant/id cached in the
+  icon path, never dereferenced in the tracked hook). Covers every variant-21 custom-position pin.
+  *(Verified in-game 2026-08-02, Testing — foot + autodrive.)*
 
 ## Planned
 
