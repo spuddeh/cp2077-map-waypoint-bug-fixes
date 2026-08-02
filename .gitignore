@@ -7,3 +7,6 @@ CLAUDE.md
 GraphEditorStates/
 images/
 *.log
+
+# User-specific files
+LogExamples/
