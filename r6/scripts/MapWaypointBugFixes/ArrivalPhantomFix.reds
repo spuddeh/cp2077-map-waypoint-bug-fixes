@@ -29,7 +29,7 @@
 //              Quest, POI and other variants are left alone. Visibility is driven from the slot both
 //              ways, so a pin that is re-tracked comes back.
 // File Version: 0.3.0
-// Credits: Spuddeh. Substrate is a base-game bug.
+// Credits: Spuddeh. Fixes a base-game (vanilla) bug.
 // ======================================================================================
 
 // Cached per controller. Resolved only where the mappin is live (icon path), read where it is not.
