@@ -1,5 +1,22 @@
 # Changelog — Map Waypoint Bug Fixes
 
+## [0.3.0] — 2026-08-02
+
+- **New: arrival phantom fix.** `ArrivalPhantomFix.reds`. When a custom waypoint is *reached*
+  (walked or driven to), vanilla untracks it and destroys it ~2 frames later, but never tears
+  down its HUD/minimap marker controller — so the marker strands until an Inventory/Stats open or
+  an autosave rebuilds the HUD. This hides the marker on the untrack edge, before the destroy.
+  - Hooks `UpdateTrackedState` (`BaseMappinBaseController` + the `GameplayMappinController`
+    override); on the tracked→untracked edge of a custom-position waypoint it calls
+    `SetRootVisible(false)`, and restores on re-track.
+  - **CTD-safe by construction.** `UpdateTrackedState` is also called while mappins are being
+    destroyed, where dereferencing the mappin crashes the game. So the variant is resolved and
+    cached only in the icon path (`UpdateIcon`, mappin guaranteed live), and the tracked hook reads
+    the cached flag plus controller-native `IsPlayerTracked()` — never the mappin.
+  - Scope is every `CustomPositionVariant` (21): the player's own waypoint and mod Set Pins alike.
+  - Measured on v2.31 with the MappinLab bench (the untrack→2-frame→destroy window, and that the
+    marker controller does not tear down). **Compiles clean both configs; pending in-game verify.**
+
 ## [0.2.0] — 2026-08-02
 
 - Renamed the mod from **World Map Input Leak Fix** to **Map Waypoint Bug Fixes** — an

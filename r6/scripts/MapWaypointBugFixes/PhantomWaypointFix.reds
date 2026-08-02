@@ -21,7 +21,7 @@
 //              route); a mappin vanilla left alive is restored, at worst a one-frame flicker
 //              on a marker that was not going to change. No census, no per-frame work: the
 //              wrap runs only on the Track-Waypoint press. Signatures verified vs the RTTI dump.
-// File Version: 0.2.0
+// File Version: 0.3.0
 // Credits: Spuddeh. Substrate is a base-game bug (mappin widget stranding on destroy).
 // ======================================================================================
 

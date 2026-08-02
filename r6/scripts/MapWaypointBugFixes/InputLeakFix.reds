@@ -17,7 +17,7 @@
 //              worldMap.swift:519-522, so no signature is guessed. With it installed, no
 //              controller is ever left registered, so there is nothing to turn into a
 //              ghost - regardless of which other mods are present.
-// File Version: 0.2.0
+// File Version: 0.3.0
 // Credits: Spuddeh. Mechanism measured with WorldMapLeakProbe; substrate is a base-game bug.
 // ======================================================================================
 

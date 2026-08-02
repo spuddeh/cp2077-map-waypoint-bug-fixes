@@ -1,3 +1,10 @@
+### [Unreleased - v0.3.0]
+
+- **New:** fixes the same stuck-marker bug when you *reach* a waypoint. Walk or drive to a custom
+  waypoint and the game removes it, but its marker can hang on your HUD and minimap until you open
+  your Inventory or Stats (or an autosave fires). This makes the marker clear the moment you arrive.
+  No dependencies, no gameplay change.
+
 ### [Unreleased - v0.2.0]
 
 - Renamed to **Map Waypoint Bug Fixes**. It now fixes two base-game waypoint bugs, not one.
