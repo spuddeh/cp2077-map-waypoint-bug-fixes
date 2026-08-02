@@ -22,6 +22,10 @@
   - Scope is every `CustomPositionVariant` (21): the player's own waypoint and mod Set Pins alike.
   - **VERIFIED in-game 2026-08-02** (Testing): marker clears on arrival, both on foot and by
     autodrive. Compiles clean both configs; release-check PASS.
+- **Removed `PhantomWaypointFix.reds`** — the arrival fix's slot watch also covers the manual
+  untrack/switch path it handled, and covers it *better*: the old fix left a world-map marker until
+  the next map open, the slot watch removes it immediately. Verified the manual path is still clean
+  with the arrival fix alone. `TryTrackQuestOrSetWaypoint` is no longer wrapped.
 
 ## [0.2.0] — 2026-08-02
 
