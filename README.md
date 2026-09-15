@@ -61,8 +61,8 @@ list this as a requirement instead of handling that bug yourself.
 
 ## License
 
-Licensed under the [PolyForm Noncommercial License 1.0.0](LICENSE). Use, modify, and share for
-any noncommercial purpose, with credit. No commercial use or paid mods.
+Licensed under the [MIT License](LICENSE). Use, change and share this mod and its source,
+including in your own mods. Keep the licence notice with any copy.
 
 ## Disclaimer
 
