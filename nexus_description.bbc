@@ -6,6 +6,8 @@
 [b]Missing fast travel points.[/b]
 With a lot of mods installed, fast travel points you have already discovered can be missing from the map after loading a save, and visiting the terminal again does not bring them back. While a save loads, the game queues every map marker it needs to create, and the queue has a fixed size. Once it is full, the game silently drops the rest. Fast travel and metro stations are queued last, so they go first, and with a big enough mod list, vendors, quest markers and other map icons go missing the same way. This keeps every marker the queue turns away and adds it once there is room, so nothing is lost.
 
+I tried to do this fix in script only, but couldn't figure out how to make it a complete fix that way, so this part needs RED4ext.
+
 [b]Stuck HUD and minimap markers.[/b]
 When a custom waypoint is removed, its marker can stay on your HUD and minimap after the waypoint itself is gone. Vanilla only clears it when you open your Inventory or Stats, or when an autosave fires. This clears it the moment the waypoint is gone.
 
@@ -55,5 +57,8 @@ With this mod installed, none of these happen.
 [line]
 [color=#ffff00][size=5][b]FOR MOD AUTHORS[/b][/size][/color]
 If your mod places custom "Set Pin" waypoints, the stuck-marker fix covers them too. You can list this as a requirement instead of handling that bug yourself.
+[line]
+[color=#ffff00][size=5][b]CREDITS[/b][/size][/color]
+Thanks to [url=https://www.nexusmods.com/profile/robber804?gameId=3333]robber804[/url] for bringing the missing fast travel points to my attention, and for all the information and background they provided about the issue.
 [line]
 [color=#8892b0][i]This mod was developed with the assistance of an LLM. All in-game testing and code validation was performed by a human. No rogue AIs were permitted through the Blackwall.[/i][/color]

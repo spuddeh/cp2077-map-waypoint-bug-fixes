@@ -15,6 +15,8 @@ stations are queued last, so they go first, and with a big enough mod list, vend
 other map icons go missing the same way. This keeps every marker the queue turns away and adds it
 once there is room, so nothing is lost.
 
+I tried to do this fix in script only, but couldn't figure out how to make it a complete fix that way, so this part needs RED4ext.
+
 **Stuck HUD and minimap markers.** When a custom waypoint is removed, its marker can stay on
 your HUD and minimap after the waypoint itself is gone.
 
@@ -79,6 +81,12 @@ is not needed.
 
 If your mod places custom "Set Pin" waypoints, the stuck-marker fix covers them too. You can
 list this as a requirement instead of handling that bug yourself.
+
+## Credits
+
+Thanks to [robber804](https://www.nexusmods.com/profile/robber804?gameId=3333) for bringing the
+missing fast travel points to my attention, and for all the information and background they
+provided about the issue.
 
 ## License
 
