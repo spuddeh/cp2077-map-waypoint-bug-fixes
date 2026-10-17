@@ -1,6 +1,6 @@
 # Changelog — Map Waypoint Bug Fixes
 
-## [1.1.0] - unreleased
+## [1.1.0] - 2026-10-17
 
 - **New: mappin request overflow fix** (`plugin/src/Main.cpp`, RED4ext plugin, first native code in
   the mod). `MappinSystem` queues every mappin add/remove request in a

@@ -1,4 +1,4 @@
-### [Unreleased - v1.1.0]
+### [1.1.0]
 
 - Fix: Fast travel points you have already discovered no longer go missing from the map after
   loading a save. With a lot of mods installed, the game could run out of room for map markers
