@@ -11,7 +11,7 @@ Nexus Mods: <https://www.nexusmods.com/cyberpunk2077/mods/32175>
 discovered can be missing from the map after loading a save, and visiting the terminal again does
 not bring them back. While a save loads, the game queues every map marker it needs to create, and
 the queue has a fixed size. Once it is full, the game silently drops the rest. Fast travel and metro
-stations are queued last, so they go first; with a big enough mod list, vendors, quest markers and
+stations are queued last, so they go first, and with a big enough mod list, vendors, quest markers and
 other map icons go missing the same way. This keeps every marker the queue turns away and adds it
 once there is room, so nothing is lost.
 
@@ -67,12 +67,12 @@ Install with your mod manager, or extract the archive into your Cyberpunk 2077 f
 The script fixes are added with `@wrapMethod` throughout, so they stack with other mods instead
 of replacing parts of the game. The stuck-marker fix only touches custom-position waypoints
 (yours, and the "Set Pin" markers some mods add). The missing-markers fix does not change any
-marker; it only stops markers being lost while a save loads. No saved-game changes.
+marker, it only stops markers being lost while a save loads. No saved-game changes.
 
 [Register all Fast Travel Points](https://www.nexusmods.com/cyberpunk2077/mods/16276) offers a
 "Restore Mappins Workaround" file that re-adds fast travel pins after a load. That works around
 the problem for fast travel pins only. This mod fixes the cause, so it covers every map marker
-type, not just fast travel. The two are not incompatible; with this mod installed the workaround
+type, not just fast travel. The two are not incompatible, with this mod installed the workaround
 is not needed.
 
 ## For mod authors

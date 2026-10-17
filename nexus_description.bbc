@@ -4,7 +4,7 @@
 [color=#ffff00][size=5][b]WHAT IT FIXES[/b][/size][/color]
 
 [b]Missing fast travel points.[/b]
-With a lot of mods installed, fast travel points you have already discovered can be missing from the map after loading a save, and visiting the terminal again does not bring them back. While a save loads, the game queues every map marker it needs to create, and the queue has a fixed size. Once it is full, the game silently drops the rest. Fast travel and metro stations are queued last, so they go first; with a big enough mod list, vendors, quest markers and other map icons go missing the same way. This keeps every marker the queue turns away and adds it once there is room, so nothing is lost.
+With a lot of mods installed, fast travel points you have already discovered can be missing from the map after loading a save, and visiting the terminal again does not bring them back. While a save loads, the game queues every map marker it needs to create, and the queue has a fixed size. Once it is full, the game silently drops the rest. Fast travel and metro stations are queued last, so they go first, and with a big enough mod list, vendors, quest markers and other map icons go missing the same way. This keeps every marker the queue turns away and adds it once there is room, so nothing is lost.
 
 [b]Stuck HUD and minimap markers.[/b]
 When a custom waypoint is removed, its marker can stay on your HUD and minimap after the waypoint itself is gone. Vanilla only clears it when you open your Inventory or Stats, or when an autosave fires. This clears it the moment the waypoint is gone.
@@ -49,9 +49,8 @@ With this mod installed, none of these happen.
 [list]
 [*]The script fixes are added with [font=Courier New]@wrapMethod[/font] throughout, so they stack with other mods instead of replacing parts of the game.[/*]
 [*]The stuck-marker fix only touches custom-position waypoints (yours, and the "Set Pin" markers some mods add).[/*]
-[*]The missing-markers fix does not change any marker; it only stops markers being lost while a save loads.[/*]
-[*]No saved-game changes, no new content.[/*]
-[*][url=https://www.nexusmods.com/cyberpunk2077/mods/16276]Register all Fast Travel Points[/url] offers a "Restore Mappins Workaround" file that re-adds fast travel pins after a load. That works around the problem for fast travel pins only. This mod fixes the cause, so it covers every map marker type, not just fast travel. The two are not incompatible; with this mod installed the workaround is not needed.[/*]
+[*]The missing-markers fix does not change any marker, it only stops markers being lost while a save loads.[/*]
+[*][url=https://www.nexusmods.com/cyberpunk2077/mods/16276]Register all Fast Travel Points[/url] offers a "Restore Mappins Workaround" file that re-adds fast travel pins after a load. That works around the problem for fast travel pins only. This mod fixes the cause, so it covers every map marker type, not just fast travel. The two are not incompatible, with this mod installed the workaround is not needed.[/*]
 [/list]
 [line]
 [color=#ffff00][size=5][b]FOR MOD AUTHORS[/b][/size][/color]

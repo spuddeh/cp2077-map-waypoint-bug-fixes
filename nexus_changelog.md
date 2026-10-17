@@ -4,7 +4,7 @@
   loading a save. With a lot of mods installed, the game could run out of room for map markers
   while a save loads and silently drop the ones that came last, which is usually fast travel and
   metro stations. Visiting the terminal again did not bring them back. With a big enough mod list,
-  vendors, quest markers and other map icons could go missing the same way; those are covered too.
+  vendors, quest markers and other map icons could go missing the same way, and those are covered too.
 - New requirement: RED4ext.
 
 ### [1.0.0] first public release
