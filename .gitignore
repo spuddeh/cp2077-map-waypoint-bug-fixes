@@ -12,3 +12,4 @@ images/
 LogExamples/
 # RED4ext plugin build output (build.ps1 copies the DLL into red4ext/)
 red4ext/
+build/
