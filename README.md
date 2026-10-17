@@ -1,11 +1,19 @@
 # Map Waypoint Bug Fixes
 
-Fixes two base-game bugs you see as broken waypoints and stuck map markers. Pure redscript,
-no gameplay changes, safe with everything.
+Fixes three base-game bugs you see as broken waypoints, stuck map markers and missing fast
+travel points. No gameplay changes.
 
 Nexus Mods: <https://www.nexusmods.com/cyberpunk2077/mods/32175>
 
 ## What it fixes
+
+**Missing fast travel points.** With a lot of mods installed, fast travel points you have already
+discovered can be missing from the map after loading a save, and visiting the terminal again does
+not bring them back. While a save loads, the game queues every map marker it needs to create, and
+the queue has a fixed size. Once it is full, the game silently drops the rest. Fast travel and metro
+stations are queued last, so they go first; with a big enough mod list, vendors, quest markers and
+other map icons go missing the same way. This keeps every marker the queue turns away and adds it
+once there is room, so nothing is lost.
 
 **Stuck HUD and minimap markers.** When a custom waypoint is removed, its marker can stay on
 your HUD and minimap after the waypoint itself is gone.
@@ -34,25 +42,34 @@ surface a base-game leak.
 3. **Press Track Waypoint once.** Several stray waypoints drop at once instead of one, and your
    tracked marker and route line can vanish.
 
-With this mod installed, neither happens.
+Missing fast travel points. This one depends on how many map markers your mods add while a save
+loads, so there is no fixed vanilla recipe. A large mod list, especially one with mods that add
+many map icons, is the usual way to see it.
+
+1. **Load a save.**
+2. **Open the map.** Some fast travel points you have discovered are missing.
+3. **Visit one of the missing terminals.** It still does not come back.
+
+With this mod installed, none of these happen.
 
 ## Requirements
 
+- [RED4ext](https://www.nexusmods.com/cyberpunk2077/mods/2380)
 - [Redscript](https://www.nexusmods.com/cyberpunk2077/mods/1511)
-
-Nothing else.
 
 ## Install
 
 Install with your mod manager, or extract the archive into your Cyberpunk 2077 folder so that
-`r6\scripts\MapWaypointBugFixes\` ends up in place.
+`red4ext\plugins\MapWaypointBugFixes\` and `r6\scripts\MapWaypointBugFixes\` end up in place.
 
 ## Compatibility
 
-Added with `@wrapMethod` throughout, so it stacks with other mods instead of replacing parts of
-the game. It only touches custom-position waypoints (yours, and the "Set Pin" markers some mods
-add). Quest, point-of-interest, apartment and stash markers are left alone. No saved-game
-changes.
+The script fixes are added with `@wrapMethod` throughout, so they stack with other mods instead
+of replacing parts of the game. The stuck-marker fix only touches custom-position waypoints
+(yours, and the "Set Pin" markers some mods add). The missing-markers fix does not change any
+marker; it only stops markers being lost while a save loads. No saved-game changes.
+
+If you use "Register all Fast Travel Points - Restore Mappins Workaround", you can remove it.
 
 ## For mod authors
 

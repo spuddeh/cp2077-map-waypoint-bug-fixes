@@ -17,7 +17,7 @@
 //              worldMap.swift:519-522, so no signature is guessed. With it installed, no
 //              controller is ever left registered, so there is nothing to turn into a
 //              ghost - regardless of which other mods are present.
-// Mod Version: 1.0.0
+// Mod Version: 1.1.0
 // Credits: Spuddeh. Fixes a base-game (vanilla) bug.
 // ======================================================================================
 

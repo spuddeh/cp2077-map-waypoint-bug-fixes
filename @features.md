@@ -1,9 +1,15 @@
 # Features — Map Waypoint Bug Fixes
 
 An umbrella mod for base-game bugs a player experiences as broken waypoints / mappins /
-tracked locations. Pure redscript, zero dependencies.
+tracked locations. Redscript plus one RED4ext plugin; requires RED4ext.
 
 ## Implemented
+
+- **Mappin request overflow fix** (RED4ext plugin, 1.1.0): the 4,096-slot mappin request queue
+  fills while a save loads and refused requests are dropped unchecked, so fast-travel and metro pins
+  (and, under heavier load, every load-time pin type) never appear. The plugin keeps every refused
+  request and hands them to the consumer, in order, once the queue drains.
+  *(Verified in Testing with 300- and 4,096-dummy overflows, and on the Gameplay save.)*
 
 - **Input leak fix** — unregister the world map's four global input callbacks on
   `OnUninitialize`, closing the base-game leak that leaves `WorldMapMenuGameController`
@@ -17,7 +23,7 @@ tracked locations. Pure redscript, zero dependencies.
   `UpdateTrackedState` and `SetRootVisible` their widget off the instant their pin is no longer the
   slot. CTD-safe (variant/id cached in the icon path, never dereferenced in the tracked hook). Covers
   every variant-21 custom-position pin — the player's own and mod Set Pins alike.
-  *(Verified in-game 2026-08-02, Testing — untrack, switch, foot arrival, autodrive arrival, SLM pin.)*
+  *(Verified in-game on Testing: untrack, switch, foot arrival, autodrive arrival, SLM pin.)*
 
 ## Planned
 

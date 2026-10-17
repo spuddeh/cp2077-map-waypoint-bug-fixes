@@ -19,7 +19,7 @@
 //              pin is reached. There is no per-controller edge state: marker controllers are pooled,
 //              so the instance that sees the untrack is usually not the one that saw the track.
 //
-//              CTD SAFETY IS LOAD-BEARING. UpdateTrackedState also runs while mappins are being
+//              NEVER DEREFERENCE THE MAPPIN IN THE TRACKED HOOK. UpdateTrackedState also runs while mappins are being
 //              destroyed, where a wref to a destroyed mappin reads non-null; dereferencing it
 //              (GetVariant/GetDisplayName) crashes the game. So the variant and id are read ONLY in
 //              the icon path (UpdateIcon, where the mappin is guaranteed bound) and cached; the
@@ -28,7 +28,7 @@
 //              Scope: CustomPositionVariant (21) only - the player's own waypoint and mod Set Pins.
 //              Quest, POI and other variants are left alone. Visibility is driven from the slot both
 //              ways, so a pin that is re-tracked comes back.
-// Mod Version: 1.0.0
+// Mod Version: 1.1.0
 // Credits: Spuddeh. Fixes a base-game (vanilla) bug.
 // ======================================================================================
 

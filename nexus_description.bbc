@@ -1,7 +1,10 @@
 [center][color=#ffff00][size=6][b]MAP WAYPOINT BUG FIXES[/b][/size][/color]
-[i]Two small fixes for base-game bugs you see as broken waypoints and stuck map markers.[/i][/center]
+[i]Fixes for base-game bugs you see as broken waypoints, stuck map markers and missing fast travel points.[/i][/center]
 [line]
 [color=#ffff00][size=5][b]WHAT IT FIXES[/b][/size][/color]
+
+[b]Missing fast travel points.[/b]
+With a lot of mods installed, fast travel points you have already discovered can be missing from the map after loading a save, and visiting the terminal again does not bring them back. While a save loads, the game queues every map marker it needs to create, and the queue has a fixed size. Once it is full, the game silently drops the rest. Fast travel and metro stations are queued last, so they go first; with a big enough mod list, vendors, quest markers and other map icons go missing the same way. This keeps every marker the queue turns away and adds it once there is room, so nothing is lost.
 
 [b]Stuck HUD and minimap markers.[/b]
 When a custom waypoint is removed, its marker can stay on your HUD and minimap after the waypoint itself is gone. Vanilla only clears it when you open your Inventory or Stats, or when an autosave fires. This clears it the moment the waypoint is gone.
@@ -14,31 +17,41 @@ Opening the world map repeatedly leaves "ghost" copies of the map controller run
 
 [b]Stuck marker:[/b]
 [list=1]
-[*][b]Set a waypoint.[/b] Open the map and right-click a spot.
-[*][b]Get rid of it.[/b] Walk or drive to it, or reopen the map and un-track it.
-[*][b]Check your HUD and minimap.[/b] The marker is still there, though the waypoint is gone.
-[*][b]Open Inventory or Stats.[/b] Now it clears. (An autosave clears it too.)
+[*][b]Set a waypoint.[/b] Open the map and right-click a spot.[/*]
+[*][b]Get rid of it.[/b] Walk or drive to it, or reopen the map and un-track it.[/*]
+[*][b]Check your HUD and minimap.[/b] The marker is still there, though the waypoint is gone.[/*]
+[*][b]Open Inventory or Stats.[/b] Now it clears. (An autosave clears it too.)[/*]
 [/list]
 
 [b]Input leak.[/b] This one is a vanilla leak that only bites when another mod keeps a leaked map controller alive. Confirmed with [i]World Builder[/i] and [i]Native Interactions Framework[/i] loaded together; other combinations may do the same. It is not those mods' fault, they just surface a base-game leak.
 [list=1]
-[*][b]Load a stack that includes those two mods.[/b]
-[*][b]Open and close the world map a few times.[/b]
-[*][b]Press Track Waypoint once.[/b] Several stray waypoints drop at once, and your tracked marker and route line can vanish.
+[*][b]Load a stack that includes those two mods.[/b][/*]
+[*][b]Open and close the world map a few times.[/b][/*]
+[*][b]Press Track Waypoint once.[/b] Several stray waypoints drop at once, and your tracked marker and route line can vanish.[/*]
 [/list]
 
-With this mod installed, neither happens.
+[b]Missing fast travel points.[/b] This one depends on how many map markers your mods add while a save loads, so there is no fixed vanilla recipe. A large mod list, especially one with mods that add many map icons, is the usual way to see it.
+[list=1]
+[*][b]Load a save.[/b][/*]
+[*][b]Open the map.[/b] Some fast travel points you have discovered are missing.[/*]
+[*][b]Visit one of the missing terminals.[/b] It still does not come back.[/*]
+[/list]
+
+With this mod installed, none of these happen.
 [line]
 [color=#ffff00][size=5][b]REQUIREMENTS[/b][/size][/color]
 [list]
-[*][url=https://www.nexusmods.com/cyberpunk2077/mods/1511]Redscript[/url]
+[*][url=https://www.nexusmods.com/cyberpunk2077/mods/2380]RED4ext[/url][/*]
+[*][url=https://www.nexusmods.com/cyberpunk2077/mods/1511]Redscript[/url][/*]
 [/list]
 [line]
 [color=#ffff00][size=5][b]COMPATIBILITY[/b][/size][/color]
 [list]
-[*]Added with [font=Courier New]@wrapMethod[/font] throughout, so it stacks with other mods instead of replacing parts of the game.
-[*]Only touches custom-position waypoints (yours, and the "Set Pin" markers some mods add). Quest, point-of-interest, apartment and stash markers are left alone.
-[*]No saved-game changes, no new content.
+[*]The script fixes are added with [font=Courier New]@wrapMethod[/font] throughout, so they stack with other mods instead of replacing parts of the game.[/*]
+[*]The stuck-marker fix only touches custom-position waypoints (yours, and the "Set Pin" markers some mods add).[/*]
+[*]The missing-markers fix does not change any marker; it only stops markers being lost while a save loads.[/*]
+[*]No saved-game changes, no new content.[/*]
+[*]If you use [i]Register all Fast Travel Points - Restore Mappins Workaround[/i], you can remove it.[/*]
 [/list]
 [line]
 [color=#ffff00][size=5][b]FOR MOD AUTHORS[/b][/size][/color]
