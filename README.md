@@ -69,7 +69,11 @@ of replacing parts of the game. The stuck-marker fix only touches custom-positio
 (yours, and the "Set Pin" markers some mods add). The missing-markers fix does not change any
 marker; it only stops markers being lost while a save loads. No saved-game changes.
 
-If you use "Register all Fast Travel Points - Restore Mappins Workaround", you can remove it.
+[Register all Fast Travel Points](https://www.nexusmods.com/cyberpunk2077/mods/16276) offers a
+"Restore Mappins Workaround" file that re-adds fast travel pins after a load. That works around
+the problem for fast travel pins only. This mod fixes the cause, so it covers every map marker
+type, not just fast travel. The two are not incompatible; with this mod installed the workaround
+is not needed.
 
 ## For mod authors
 
