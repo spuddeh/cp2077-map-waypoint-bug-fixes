@@ -1,4 +1,4 @@
-### [Unreleased - v1.1.1]
+### [1.1.1]
 
 - Fix: Now loads on game versions 2.5 and 2.31.
 - Minor code improvements
