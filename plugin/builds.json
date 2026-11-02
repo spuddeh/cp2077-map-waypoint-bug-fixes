@@ -1,0 +1,6 @@
+{
+  "name": "MapWaypointBugFixes",
+  "builds": [
+    { "game": "any", "sdk": "5246e659d783e5834cc08a90e56c8932c9ed3449", "ship": "red4ext/plugins/MapWaypointBugFixes" }
+  ]
+}

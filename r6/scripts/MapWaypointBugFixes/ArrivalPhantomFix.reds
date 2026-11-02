@@ -28,7 +28,7 @@
 //              Scope: CustomPositionVariant (21) only - the player's own waypoint and mod Set Pins.
 //              Quest, POI and other variants are left alone. Visibility is driven from the slot both
 //              ways, so a pin that is re-tracked comes back.
-// Mod Version: 1.1.0
+// Mod Version: 1.1.1
 // Credits: Spuddeh. Fixes a base-game (vanilla) bug.
 // ======================================================================================
 

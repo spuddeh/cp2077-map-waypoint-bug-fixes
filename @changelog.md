@@ -1,5 +1,24 @@
 # Changelog — Map Waypoint Bug Fixes
 
+## [1.1.1] - 2026-11-02
+
+- **[MapWaypointBugFixes] [plugin/src/Main.cpp] v1.1.1**:
+    - [Fix] `Query` declares `RED4EXT_V1_RUNTIME_VERSION_INDEPENDENT`. 1.1.0 declared
+      `RED4EXT_V1_RUNTIME_VERSION_LATEST` from an SDK where that meant 2.31, so RED4ext refused it on
+      2.5 (`incompatible with the current patch`). The plugin resolves its four functions by name
+      hash and uses no SDK engine type; all four hashes (`0x0B4A5D27`, `0x05FD5C5E`, `0xF7D023D1`,
+      `0xAF3E3A1F`) resolve on 2.31 and 2.5, and Push/Pop disassemble to the same 4,096-slot queue
+      on both. Loaded on both instances; a 4,096-dummy overflow on 2.5 recovered 832 requests and
+      lost nothing (151 fast-travel pins missing without the plugin).
+    - [Change] `RED4EXT_V1_SEMVER(1, 1, 1)` and the source headers.
+- **[MapWaypointBugFixes] [plugin/] v1.1.1**:
+    - [Refactor] Build moved to the portfolio plugin standard (`MyMods/_shared/plugin/`):
+      `plugin/build.ps1` and `plugin/red4ext-plugin.cmake` copied from canonical, `plugin/builds.json`
+      pins RED4ext.SDK `5246e659` for one `any` build, `plugin/CMakeLists.txt` replaces the root one.
+      Release with a PDB, the PDB recorded by file name only, no incremental linking: the DLL is
+      57 KB (was 330 KB), and its DLL and PDB are kept in `symbols/1.1.1/any/`. The root
+      `build.ps1` (Ninja, RelWithDebInfo, live SDK) is removed.
+
 ## [1.1.0] - 2026-10-17
 
 - **New: mappin request overflow fix** (`plugin/src/Main.cpp`, RED4ext plugin, first native code in

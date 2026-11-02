@@ -11,3 +11,5 @@ images/
 # User-specific files
 LogExamples/
 build/
+plugin/build/
+plugin/build-*/

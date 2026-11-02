@@ -1,3 +1,8 @@
+### [Unreleased - v1.1.1]
+
+- Fix: Now loads on game version 2.5.
+- Minor code improvements
+
 ### [1.1.0]
 
 - Fix: Discovered fast travel points no longer go missing from the map after loading a save.

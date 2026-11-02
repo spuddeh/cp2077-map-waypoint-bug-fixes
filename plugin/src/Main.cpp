@@ -11,7 +11,7 @@
 //              Push keeps every request the queue refuses, in order, and Pop hands them to the
 //              consumer once the queue runs dry. While anything is kept, new requests are kept
 //              behind it, so the consumer sees requests in the order they were made.
-// Mod Version: 1.1.0
+// Mod Version: 1.1.1
 // Credits: Spuddeh. Fixes a base-game (vanilla) bug.
 // ======================================================================================
 #include <RED4ext/RED4ext.hpp>
@@ -180,7 +180,7 @@ RED4EXT_C_EXPORT void RED4EXT_CALL Query(RED4ext::v1::PluginInfo* aInfo)
 {
     aInfo->name = L"MapWaypointBugFixes";
     aInfo->author = L"Spuddeh";
-    aInfo->version = RED4EXT_V1_SEMVER(1, 1, 0);
+    aInfo->version = RED4EXT_V1_SEMVER(1, 1, 1);
     // Every game access goes through the address table by name hash, and no SDK engine type is used,
     // so one DLL serves every build whose table names these four functions. A build that renames
     // them fails to resolve and the plugin does not load.

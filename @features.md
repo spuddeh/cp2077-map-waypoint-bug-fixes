@@ -5,11 +5,12 @@ tracked locations. Redscript plus one RED4ext plugin; requires RED4ext.
 
 ## Implemented
 
-- **Mappin request overflow fix** (RED4ext plugin, 1.1.0): the 4,096-slot mappin request queue
+- **Mappin request overflow fix** (RED4ext plugin, 1.1.0; one DLL for game 2.31 and 2.5 from 1.1.1): the 4,096-slot mappin request queue
   fills while a save loads and refused requests are dropped unchecked, so fast-travel and metro pins
   (and, under heavier load, every load-time pin type) never appear. The plugin keeps every refused
   request and hands them to the consumer, in order, once the queue drains.
-  *(Verified in Testing with 300- and 4,096-dummy overflows, and on the Gameplay save.)*
+  *(Verified in Testing with 300- and 4,096-dummy overflows, and on the Gameplay save; on 2.5 a
+  4,096-dummy overflow recovered 832 requests and lost nothing.)*
 
 - **Input leak fix** — unregister the world map's four global input callbacks on
   `OnUninitialize`, closing the base-game leak that leaves `WorldMapMenuGameController`
