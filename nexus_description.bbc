@@ -49,6 +49,7 @@ With this mod installed, none of these happen.
 [line]
 [color=#ffff00][size=5][b]COMPATIBILITY[/b][/size][/color]
 [list]
+[*]Works on game versions 2.5 and 2.31.[/*]
 [*]The script fixes are added with [font=Courier New]@wrapMethod[/font] throughout, so they stack with other mods instead of replacing parts of the game.[/*]
 [*]The stuck-marker fix only touches custom-position waypoints (yours, and the "Set Pin" markers some mods add).[/*]
 [*]The missing-markers fix does not change any marker, it only stops markers being lost while a save loads.[/*]
