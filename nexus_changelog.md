@@ -1,6 +1,6 @@
 ### [Unreleased - v1.1.1]
 
-- Fix: Now loads on game version 2.5.
+- Fix: Now loads on game version 2.5. The same download works on 2.31.
 - Minor code improvements
 
 ### [1.1.0]
